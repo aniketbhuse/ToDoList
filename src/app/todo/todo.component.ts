@@ -32,8 +32,8 @@ export class TodoComponent {
     
   }
 
-  finishedList : Todo[] =[
-  ]
+  finishedList : Todo[] =[]
+  
 
   addTodo(){
     this.todoList.push({content:this.todoValue, value:false});
