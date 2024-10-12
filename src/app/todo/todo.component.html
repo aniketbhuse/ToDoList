@@ -1,0 +1,55 @@
+<div class="container-fluid ">
+    <div class="col-12  d-flex  justify-content-center">
+        <div class="col-4 todo-block mt-3 shadow bg-white">
+            <h4 class="text-center mb-3 todo-header mt-3">Todo List</h4>
+            <div class="col-12 d-flex align-item-center justify-content-center">
+                <input class="col-8 todo-input shadow" placeholder="Enter Text..." type="text" name="text" [(ngModel)]="todoValue">
+                <button type="submit" class="col-3 btn btn-primary shadow add-btn" (click)="addTodo()">Add</button> 
+            </div>
+
+            <div class="todo-list mt-3" style="margin-left: 20px;">
+                <h5>Todo List</h5>
+                <div class="col-12 d-flex todo-single align-center" style="padding-bottom: 20px;" *ngFor="let todo of todoList; let i=index;">
+                    <input type="checkbox" class="todo-checkbox" [(ngModel)]="todo.value" (ngModelChange)="changeTodo(i)">
+                    <p class="col-9 header">{{todo.content}}</p>
+                    <button type="button" class="btn btn-outline-light text-danger del-btn shadow delete-btn" (click)="openModal(content, i, 'todoList')">
+                        <i class="bi bi-trash3">Delete</i>
+                    </button>
+                </div>
+            </div>
+            <!--Finished List -->
+
+            <div class="todo-list mt-3" style="margin-left: 20px;" *ngIf="finishedList.length>0">
+                <h5>Finished List</h5>
+                <div class="col-12 d-flex todo-single align-center" style="padding-bottom: 20px;" *ngFor="let todo of  finishedList; let i=index;">
+                    <input type="checkbox" class="todo-checkbox" [(ngModel)]="todo.value" (ngModelChange)="changeFinished(i)">
+                    <p class="col-9 header">{{todo.content}}</p>
+                    <button type="button" class="btn btn-outline-light text-danger del-btn shadow delete-btn" (click)="openModal(content, i, 'finishedList')">
+                        <i class="bi bi-trash3">Delete</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #content let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Delete Item</h4>
+        <button
+            type="button"
+            class="btn-close"
+            aria-describedby="modal-title"
+            (click)="modal.dismiss('Cross click')"
+        ></button>
+    </div>
+    <div class="modal-body">
+        <p>
+            <strong>Are you sure you want to delete?</strong>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+    </div>
+</ng-template>

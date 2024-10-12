@@ -1,0 +1,15 @@
+
+.header{
+    margin-left: 10px;
+    margin-top: 14px;
+}
+.add-btn{
+    margin-left: 10px;
+}
+.delete-btn{
+    border-radius: 10px;
+    border: 1px solid;
+}
+body{
+    background-color: aqua;
+}
