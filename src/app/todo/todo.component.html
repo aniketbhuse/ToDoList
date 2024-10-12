@@ -20,7 +20,7 @@
             <!--Finished List -->
 
             <div class="todo-list mt-3" style="margin-left: 20px;" *ngIf="finishedList.length>0">
-                <h5>Finished List</h5>
+                <h5>Finished Item</h5>
                 <div class="col-12 d-flex todo-single align-center" style="padding-bottom: 20px;" *ngFor="let todo of  finishedList; let i=index;">
                     <input type="checkbox" class="todo-checkbox" [(ngModel)]="todo.value" (ngModelChange)="changeFinished(i)">
                     <p class="col-9 header">{{todo.content}}</p>
